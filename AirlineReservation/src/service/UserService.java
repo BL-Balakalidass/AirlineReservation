@@ -1,5 +1,6 @@
 package service;
 
+import model.Admin;
 import model.User;
 import util.PasswordUtil;
 
@@ -10,7 +11,7 @@ public class UserService {
 
     private List<User> users = new ArrayList<>();
 
-    public void register(User user) {
+    public void register(@org.jetbrains.annotations.UnknownNullability Admin user) {
 
         user.setPassword(
                 PasswordUtil.encryptPassword(user.getPassword()));
