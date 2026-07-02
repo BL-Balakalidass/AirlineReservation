@@ -7,7 +7,7 @@ public class PassengerProfile {
     private String seatPreference;
     private String specialAssistance;
 
-    private EmergencyContact emergencyContact;
+//    private EmergencyContact emergencyContact;
 
     public PassengerProfile() {
     }
@@ -44,12 +44,12 @@ public class PassengerProfile {
         this.specialAssistance = specialAssistance;
     }
 
-    public EmergencyContact getEmergencyContact() {
-        return emergencyContact;
-    }
-
-    public void setEmergencyContact(EmergencyContact emergencyContact) {
-        this.emergencyContact = emergencyContact;
-    }
+//    public EmergencyContact getEmergencyContact() {
+//        return emergencyContact;
+//    }
+//
+//    public void setEmergencyContact(EmergencyContact emergencyContact) {
+//        this.emergencyContact = emergencyContact;
+//    }
 
 }

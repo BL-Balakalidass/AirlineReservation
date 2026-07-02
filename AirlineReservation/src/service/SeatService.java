@@ -72,4 +72,16 @@ public class SeatService {
             }
         }
     }
+
+    // Confirm selected seat
+    public void confirmSeat(String seatId) {
+
+        Seat seat = seatRepo.findSeatById(seatId);
+
+        if (seat != null) {
+            seat.setStatus("BOOKED");
+            seat.setAvailable(false);
+        }
+
+    }
 }

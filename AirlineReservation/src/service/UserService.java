@@ -1,6 +1,5 @@
 package service;
 
-import model.Admin;
 import model.User;
 import util.PasswordUtil;
 
@@ -11,7 +10,7 @@ public class UserService {
 
     private List<User> users = new ArrayList<>();
 
-    public void register(@org.jetbrains.annotations.UnknownNullability Admin user) {
+    public void register(User user) {
 
         user.setPassword(
                 PasswordUtil.encryptPassword(user.getPassword()));
@@ -22,7 +21,6 @@ public class UserService {
     }
 
     public void updateProfile(User user) {
-
         System.out.println("Profile Updated.");
     }
 
@@ -36,9 +34,7 @@ public class UserService {
     public void displayAllUsers() {
 
         for (User user : users) {
-
             System.out.println(user);
-
             System.out.println("----------------");
         }
     }
@@ -46,5 +42,4 @@ public class UserService {
     public List<User> getUsers() {
         return users;
     }
-
 }

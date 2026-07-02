@@ -103,6 +103,9 @@ public class Flight {
         this.status = status;
     }
 
+    public Flight(String ai101, String chennai, String delhi, int i) {
+    }
+
     // ---------------------------
     // Getters and Setters
     // ---------------------------
@@ -372,5 +375,9 @@ public class Flight {
                 "\nCancellation       : " + cancellationPolicy +
                 "\nModification       : " + modificationPolicy +
                 "\n===============================";
+    }
+
+    public double getFare() {
+        return baseFare;
     }
 }
