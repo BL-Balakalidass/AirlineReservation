@@ -1,17 +1,12 @@
 package model;
 
-import static java.lang.Character.getName;
-//import static sun.security.pkcs11.wrapper.Functions.getId;
-
 public class AirlineStaff extends User {
 
-    private String role;        // e.g., Operations, Ground Staff
+    private String role;
     private String staffId;
-    private String username;
-    private String password;
 
-    public AirlineStaff(int id,
-                        String name,
+    public AirlineStaff(int userId,
+                        String fullName,
                         String email,
                         String phone,
                         String dob,
@@ -20,56 +15,55 @@ public class AirlineStaff extends User {
                         String password,
                         String role) {
 
-        super(id, name, email, phone, dob);
+        super(userId,
+                fullName,
+                email,
+                phone,
+                dob,
+                staffId,      // passportNumber field stores staffId
+                username,
+                password);
 
         this.staffId = staffId;
-        this.username = username;
-        this.password = password;
         this.role = role;
     }
 
-    // Getters
+    @Override
+    public String getRole() {
+        return "Airline Staff";
+    }
+
+    @Override
+    public void displayPermissions() {
+
+        System.out.println("Airline Staff Permissions");
+        System.out.println("View Flights");
+        System.out.println("Manage Bookings");
+        System.out.println("Update Seat Status");
+        System.out.println("Handle Check-in");
+        System.out.println("Department : " + role);
+    }
+
     public String getStaffId() {
         return staffId;
     }
 
-    public String getUsername() {
-        return username;
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getRole() {
+    public String getDepartment() {
         return role;
     }
 
-    // Permissions (used in Main.java)
-    public void displayPermissions() {
-        System.out.println("\n--- Airline Staff Permissions ---");
-        System.out.println("✔ View Flights");
-        System.out.println("✔ Manage Bookings");
-        System.out.println("✔ Update Seat Status");
-        System.out.println("✔ Handle Check-in");
-        System.out.println("Role: " + role);
+    public void setDepartment(String role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "AirlineStaff{" +
-                "id=" + getId() +
-                ", name='" + getName() + '\'' +
-                ", staffId='" + staffId + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
-
-    private String getName() {
-        return "";
-    }
-
-    private String getId() {
-        return "";
+        return super.toString() +
+                "\nStaff ID : " + staffId +
+                "\nDepartment : " + role;
     }
 }
