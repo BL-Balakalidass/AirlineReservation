@@ -380,4 +380,18 @@ public class Flight {
     public double getFare() {
         return baseFare;
     }
+
+    public double getOccupancyRate(int totalSeats) {
+
+        if (totalSeats <= 0) {
+
+            return 0;
+
+        }
+
+        int bookedSeats = totalSeats - availableSeats;
+
+        return (bookedSeats * 100.0) / totalSeats;
+
+    }
 }
