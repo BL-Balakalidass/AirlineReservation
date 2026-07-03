@@ -77,6 +77,11 @@ public class Booking {
         passengers.add(passenger);
 
     }
+    public void removePassenger(Passenger passenger) {
+
+        passengers.remove(passenger);
+
+    }
 
     public List<Passenger> getPassengers() {
 

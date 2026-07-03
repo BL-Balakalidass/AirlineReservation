@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ee12949-29c8-42ff-ab32-b77d3fd1b373" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/BookingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/BookingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/PaymentService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
