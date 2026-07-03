@@ -242,4 +242,48 @@ public class FlightAnalyticsService {
                 + flight.getTotalFare());
     }
 
+    // -----------------------------------
+// Occupancy Rate
+// -----------------------------------
+
+    public double calculateOccupancy(Flight flight,
+                                     int totalSeats) {
+
+        return flight.getOccupancyRate(totalSeats);
+
+    }
+    // -----------------------------------
+// Flight Report
+// -----------------------------------
+
+    public void displayFlightReport(List<Flight> flights,
+                                    int totalSeats) {
+
+        System.out.println();
+
+        System.out.println("========== FLIGHT REPORT ==========");
+
+        for (Flight flight : flights) {
+
+            System.out.println("--------------------------------");
+
+            System.out.println("Flight : "
+                    + flight.getFlightNumber());
+
+            System.out.println("Fare : ₹"
+                    + flight.getFare());
+
+            System.out.println("Available Seats : "
+                    + flight.getAvailableSeats());
+
+            System.out.println("Status : "
+                    + flight.getStatus());
+
+            System.out.printf("Occupancy : %.2f%%\n",
+                    calculateOccupancy(flight,
+                            totalSeats));
+
+        }
+
+    }
 }
