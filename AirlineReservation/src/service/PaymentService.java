@@ -119,5 +119,36 @@ public class PaymentService {
                 .toUpperCase();
 
     }
+    // --------------------------------------
+// Additional Payment
+// --------------------------------------
+
+    public void additionalPayment(double amount) {
+
+        System.out.println();
+
+        System.out.println("Additional Payment Required");
+
+        System.out.println("Amount : ₹" + amount);
+
+        System.out.println("Payment Successful.");
+
+    }
+
+// --------------------------------------
+// Refund Difference
+// --------------------------------------
+
+    public void refundDifference(double amount) {
+
+        System.out.println();
+
+        System.out.println("Refund Initiated");
+
+        System.out.println("Refund Amount : ₹" + amount);
+
+        System.out.println("Refund Successful.");
+
+    }
 
 }

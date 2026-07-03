@@ -104,4 +104,24 @@ public class BookingService {
 
     }
 
+    // --------------------------------------
+// Update Booking
+// --------------------------------------
+
+    public void updateBooking(Booking booking) {
+
+        if (booking == null) {
+
+            System.out.println("Booking Not Found.");
+            return;
+
+        }
+
+        booking.calculateFare();
+
+        System.out.println("Booking Updated Successfully.");
+
+    }
+
+
 }
