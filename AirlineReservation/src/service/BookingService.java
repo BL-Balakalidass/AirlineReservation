@@ -4,6 +4,7 @@ import model.*;
 import repo.BookingRepo;
 
 import java.util.List;
+import model.BookingPriority;
 
 public class BookingService {
 
@@ -160,5 +161,46 @@ public class BookingService {
 
     }
 
+    // -----------------------------------------
+// Create Priority Booking
+// -----------------------------------------
+
+    public Booking createPriorityBooking(Booking booking,
+                                         BookingPriority priority) {
+
+        if (booking == null) {
+
+            return null;
+
+        }
+
+        booking.setPriority(priority);
+
+        booking.setBookingTime(
+                System.currentTimeMillis());
+
+        return booking;
+
+    }
+
+    // -----------------------------------------
+// Display Booking Priority
+// -----------------------------------------
+
+    public void displayBookingPriority(Booking booking) {
+
+        if (booking == null) {
+
+            return;
+
+        }
+
+        System.out.println("PNR : "
+                + booking.getPnr());
+
+        System.out.println("Priority : "
+                + booking.getPriority());
+
+    }
 
 }

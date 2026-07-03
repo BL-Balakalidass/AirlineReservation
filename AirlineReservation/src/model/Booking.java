@@ -3,8 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import model.BookingPriority;
 
-public class Booking {
+public class Booking  implements Comparable<Booking>{
 
     // Booking Details
     private String bookingId;
@@ -32,6 +33,10 @@ public class Booking {
     private String transactionId;
 
     private boolean paymentCompleted;
+
+    private BookingPriority priority = BookingPriority.REGULAR;
+
+    private long bookingTime;
 
     // Constructor
     public Booking(Flight flight) {
@@ -362,4 +367,53 @@ public class Booking {
                 "\n}";
     }
 
+    public BookingPriority getPriority() {
+
+        return priority;
+
+    }
+
+    public void setPriority(BookingPriority priority) {
+
+        this.priority = priority;
+
+    }
+
+    public long getBookingTime() {
+
+        return bookingTime;
+
+    }
+
+    public void setBookingTime(long bookingTime) {
+
+        this.bookingTime = bookingTime;
+
+    }
+    @Override
+    public int compareTo(Booking other) {
+
+        if (this.priority != other.priority) {
+
+            if (this.priority == BookingPriority.EXPRESS) {
+
+                return -1;
+
+            }
+
+            return 1;
+
+        }
+
+        return Long.compare(this.bookingTime,
+                other.bookingTime);
+
+    }
+
+
+    public void setPnr(String pnr) {
+
+        this.pnr = pnr;
+
+    }
 }
