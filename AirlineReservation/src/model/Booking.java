@@ -6,44 +6,71 @@ import java.util.UUID;
 
 public class Booking {
 
+    // Booking Details
     private String bookingId;
     private String pnr;
+
+    // Flight Details
     private Flight flight;
 
+    // Passenger & Seat Details
     private List<Passenger> passengers;
     private List<Seat> seats;
 
+    // Booking State
     private BookingState bookingState;
 
+    // Fare Details
     private double flightFare;
     private double seatCharge;
     private double tax;
     private double totalFare;
 
+    // Payment Details
+    private PaymentStatus paymentStatus;
+    private String paymentMethod;
+    private String transactionId;
+
     private boolean paymentCompleted;
 
+    // Constructor
     public Booking(Flight flight) {
 
-        this.bookingId = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        this.bookingId =
+                UUID.randomUUID()
+                        .toString()
+                        .substring(0, 8)
+                        .toUpperCase();
+
         this.pnr = generatePNR();
 
         this.flight = flight;
 
-        this.passengers = new ArrayList<>();
-        this.seats = new ArrayList<>();
+        passengers = new ArrayList<>();
+        seats = new ArrayList<>();
 
-        this.bookingState = BookingState.INITIATED;
+        bookingState = BookingState.INITIATED;
 
-        this.paymentCompleted = false;
+        paymentStatus = PaymentStatus.PENDING;
+
+        paymentMethod = "";
+
+        transactionId = "";
+
+        paymentCompleted = false;
     }
 
+    // Generate PNR
     private String generatePNR() {
 
-        return "PNR" + (int) (Math.random() * 900000 + 100000);
+        return "PNR"
+                + (int) (Math.random() * 900000 + 100000);
 
     }
 
-    // ---------------- Passenger ----------------
+    // --------------------------
+    // Passenger Operations
+    // --------------------------
 
     public void addPassenger(Passenger passenger) {
 
@@ -51,7 +78,15 @@ public class Booking {
 
     }
 
-    // ---------------- Seat ----------------
+    public List<Passenger> getPassengers() {
+
+        return passengers;
+
+    }
+
+    // --------------------------
+    // Seat Operations
+    // --------------------------
 
     public void addSeat(Seat seat) {
 
@@ -59,7 +94,15 @@ public class Booking {
 
     }
 
-    // ---------------- Fare ----------------
+    public List<Seat> getSeats() {
+
+        return seats;
+
+    }
+
+    // --------------------------
+    // Fare Calculation
+    // --------------------------
 
     public void calculateFare() {
 
@@ -75,112 +118,232 @@ public class Booking {
 
         tax = (flightFare + seatCharge) * 0.05;
 
-        totalFare = flightFare + seatCharge + tax;
+        totalFare =
+                flightFare
+                        + seatCharge
+                        + tax;
 
     }
 
-    // ---------------- State ----------------
+    public double getTotalFare() {
+
+        return totalFare;
+
+    }
+
+    // --------------------------
+    // Booking State
+    // --------------------------
 
     public void nextState() {
 
         switch (bookingState) {
 
             case INITIATED:
-                bookingState = BookingState.PASSENGER_DETAILS;
+
+                bookingState =
+                        BookingState.PASSENGER_DETAILS;
+
                 break;
 
             case PASSENGER_DETAILS:
-                bookingState = BookingState.SEAT_SELECTED;
+
+                bookingState =
+                        BookingState.SEAT_SELECTED;
+
                 break;
 
             case SEAT_SELECTED:
-                bookingState = BookingState.PAYMENT_PENDING;
+
+                bookingState =
+                        BookingState.PAYMENT_PENDING;
+
                 break;
 
             case PAYMENT_PENDING:
+
                 if (paymentCompleted) {
-                    bookingState = BookingState.CONFIRMED;
+
+                    bookingState =
+                            BookingState.CONFIRMED;
+
                 }
+
                 break;
 
             default:
+
                 break;
         }
 
     }
 
-    // ---------------- Payment ----------------
+    public BookingState getBookingState() {
+
+        return bookingState;
+
+    }
+
+    public void setBookingState(BookingState bookingState) {
+
+        this.bookingState = bookingState;
+
+    }
+
+    // --------------------------
+    // Payment
+    // --------------------------
 
     public void completePayment() {
 
         paymentCompleted = true;
+
         nextState();
 
     }
 
-    // ---------------- Display ----------------
+    public boolean isPaymentCompleted() {
+
+        return paymentCompleted;
+
+    }
+
+    public PaymentStatus getPaymentStatus() {
+
+        return paymentStatus;
+
+    }
+
+    public void setPaymentStatus(
+            PaymentStatus paymentStatus) {
+
+        this.paymentStatus = paymentStatus;
+
+    }
+
+    public String getPaymentMethod() {
+
+        return paymentMethod;
+
+    }
+
+    public void setPaymentMethod(
+            String paymentMethod) {
+
+        this.paymentMethod = paymentMethod;
+
+    }
+
+    public String getTransactionId() {
+
+        return transactionId;
+
+    }
+
+    public void setTransactionId(
+            String transactionId) {
+
+        this.transactionId = transactionId;
+
+    }
+    // --------------------------
+    // Booking Information
+    // --------------------------
+
+    public String getBookingId() {
+
+        return bookingId;
+
+    }
+
+    public String getPnr() {
+
+        return pnr;
+
+    }
+
+    public Flight getFlight() {
+
+        return flight;
+
+    }
+
+    // --------------------------
+    // Display Booking
+    // --------------------------
 
     public void displayBooking() {
 
-        System.out.println("\n========== BOOKING DETAILS ==========");
+        System.out.println("\n====================================");
+        System.out.println("          BOOKING DETAILS");
+        System.out.println("====================================");
 
-        System.out.println("Booking ID : " + bookingId);
-        System.out.println("PNR        : " + pnr);
-        System.out.println("Flight     : " + flight.getFlightNumber());
-        System.out.println("Passengers : " + passengers.size());
+        System.out.println("Booking ID      : " + bookingId);
+        System.out.println("PNR             : " + pnr);
 
-        System.out.print("Seats      : ");
+        if (flight != null) {
+
+            System.out.println("Flight Number   : "
+                    + flight.getFlightNumber());
+
+        }
+
+        System.out.println("Passengers      : "
+                + passengers.size());
+
+        System.out.print("Seats           : ");
 
         for (Seat seat : seats) {
+
             System.out.print(seat.getSeatId() + " ");
+
         }
 
         System.out.println();
 
-        System.out.println("Fare        : " + flightFare);
-        System.out.println("Seat Charge : " + seatCharge);
-        System.out.println("Tax         : " + tax);
-        System.out.println("Total Fare  : " + totalFare);
+        System.out.println("Flight Fare     : ₹"
+                + flightFare);
 
-        System.out.println("State       : " + bookingState);
+        System.out.println("Seat Charges    : ₹"
+                + seatCharge);
 
-        System.out.println("Payment     : " +
-                (paymentCompleted ? "Completed" : "Pending"));
+        System.out.println("Tax             : ₹"
+                + tax);
+
+        System.out.println("Total Fare      : ₹"
+                + totalFare);
+
+        System.out.println("Booking State   : "
+                + bookingState);
+
+        System.out.println("Payment Status  : "
+                + paymentStatus);
+
+        System.out.println("Payment Method  : "
+                + paymentMethod);
+
+        System.out.println("Transaction ID  : "
+                + transactionId);
+
+        System.out.println("====================================");
 
     }
 
-    // ---------------- Getters ----------------
+    @Override
+    public String toString() {
 
-    public String getBookingId() {
-        return bookingId;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public List<Passenger> getPassengers() {
-        return passengers;
-    }
-
-    public List<Seat> getSeats() {
-        return seats;
-    }
-
-    public BookingState getBookingState() {
-        return bookingState;
-    }
-
-    public double getTotalFare() {
-        return totalFare;
-    }
-
-    public boolean isPaymentCompleted() {
-        return paymentCompleted;
+        return "\nBooking{" +
+                "\nbookingId='" + bookingId + '\'' +
+                ",\npnr='" + pnr + '\'' +
+                ",\nflight=" +
+                (flight != null ? flight.getFlightNumber() : "N/A") +
+                ",\npassengers=" + passengers.size() +
+                ",\nseats=" + seats.size() +
+                ",\ntotalFare=" + totalFare +
+                ",\nbookingState=" + bookingState +
+                ",\npaymentStatus=" + paymentStatus +
+                ",\ntransactionId='" + transactionId + '\'' +
+                "\n}";
     }
 
 }
