@@ -146,15 +146,16 @@ public class FlightManagementService {
 
         for (Flight flight : flights) {
 
-            if (flight.getFlightNumber()
-                    .equalsIgnoreCase(flightNumber)) {
+            if (flight != null
+                    && flight.getFlightNumber() != null
+                    && flight.getFlightNumber().equalsIgnoreCase(flightNumber)) {
 
                 return flight;
             }
-
         }
 
         return null;
+
 
     }
 

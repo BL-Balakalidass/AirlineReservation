@@ -6,6 +6,10 @@ public class Airport {
     private String airportName;
     private String city;
     private String country;
+    private boolean active;
+    private String terminal;
+    private String timezone;
+    private String contactNumber;
 
     public Airport() {
     }
@@ -60,5 +64,50 @@ public class Airport {
                 airportName +
                 " (" + city + ", " +
                 country + ")";
+    }
+
+    public void setActive(boolean active) {
+
+        this.active = active;
+
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+
+    }
+
+    public void setTimezone(String timezone) {
+
+        this.timezone = timezone;
+
+    }
+
+    public void setTerminal(String terminal) {
+
+        this.terminal = terminal;
+    }
+    public String getTimezone() {
+
+        return timezone;
+
+    }
+
+    public String getTerminal() {
+
+        return terminal;
+
+    }
+
+    public boolean isActive() {
+
+        return active;
+
+    }
+
+    public String getContactNumber() {
+
+        return contactNumber;
+
     }
 }
