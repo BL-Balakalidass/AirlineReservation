@@ -1,9 +1,6 @@
 package service;
 
-import model.Booking;
-import model.Flight;
-import model.Passenger;
-import model.Seat;
+import model.*;
 import repo.BookingRepo;
 
 import java.util.List;
@@ -120,6 +117,46 @@ public class BookingService {
         booking.calculateFare();
 
         System.out.println("Booking Updated Successfully.");
+
+    }
+
+    // --------------------------------------
+// Cancel Booking
+// --------------------------------------
+
+    public void cancelBooking(Booking booking) {
+
+        if (booking == null) {
+
+            System.out.println("Booking Not Found.");
+
+            return;
+        }
+
+        booking.setBookingState(
+                BookingState.CANCELLED);
+
+        System.out.println(
+                "Booking Cancelled Successfully.");
+
+    }
+
+    // --------------------------------------
+// Display Cancellation
+// --------------------------------------
+
+    public void displayCancellation(
+            Booking booking) {
+
+        if (booking == null) {
+
+            System.out.println(
+                    "Booking Not Found.");
+
+            return;
+        }
+
+        booking.displayBooking();
 
     }
 

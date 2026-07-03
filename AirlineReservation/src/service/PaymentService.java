@@ -150,5 +150,23 @@ public class PaymentService {
         System.out.println("Refund Successful.");
 
     }
+    // --------------------------------------
+// Process Refund
+// --------------------------------------
+
+    public void processRefund(double amount) {
+
+        System.out.println();
+
+        System.out.println(
+                "Refund Initiated");
+
+        System.out.println(
+                "Refund Amount : ₹" + amount);
+
+        System.out.println(
+                "Refund Successful.");
+
+    }
 
 }
