@@ -84,4 +84,37 @@ public class SeatService {
         }
 
     }
+
+    // --------------------------------------
+// Release Seat
+// --------------------------------------
+
+    public void releaseSeat(String seatId) {
+
+        Seat seat = seatRepo.findSeatById(seatId);
+
+        if (seat == null) {
+
+            return;
+
+        }
+
+        seat.setAvailable(true);
+
+        seat.setStatus("AVAILABLE");
+
+    }
+    // --------------------------------------
+// Change Seat
+// --------------------------------------
+
+    public String changeSeat(String oldSeatId,
+                             String newSeatId,
+                             boolean exitEligible) {
+
+        releaseSeat(oldSeatId);
+
+        return selectSeat(newSeatId, exitEligible);
+
+    }
 }

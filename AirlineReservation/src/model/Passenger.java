@@ -61,4 +61,15 @@ public class Passenger extends User {
         this.specialAssistance = specialAssistance;
     }
 
+    public void setEmail(String email) {
+
+        this.email = email;
+
+    }
+
+    public void setPhone(String phone) {
+
+        this.phone = phone;
+
+    }
 }

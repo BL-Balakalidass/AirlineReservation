@@ -93,6 +93,12 @@ public class Booking {
         seats.add(seat);
 
     }
+    public void removeSeat(Seat seat) {
+
+        seats.remove(seat);
+
+    }
+
 
     public List<Seat> getSeats() {
 
@@ -265,6 +271,11 @@ public class Booking {
     public Flight getFlight() {
 
         return flight;
+
+    }
+    public void setFlight(Flight flight) {
+
+        this.flight = flight;
 
     }
 
