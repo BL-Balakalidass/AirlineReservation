@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ee12949-29c8-42ff-ab32-b77d3fd1b373" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/AirlineReservation/src/service/BookingManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AirlineReservation/src/service/FlightManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AirlineReservation/src/service/PaymentManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/FlightManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/PaymentManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/CardPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/CardPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/UPIPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/UPIPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/model/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/CardPayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/model/CardPayment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/Payment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/model/Payment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/UPIPayment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/model/UPIPayment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/PaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/PaymentService.class" afterDir="false" />
-    </list>
+    <list default="true" id="0ee12949-29c8-42ff-ab32-b77d3fd1b373" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
