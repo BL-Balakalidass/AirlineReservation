@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -417,12 +418,27 @@ public class Booking  implements Comparable<Booking>{
 
     }
 
-    public User getPassenger() {
-        return null;
-    }
 
 
     public String getETicketNumber() {
         return "";
+    }
+
+    // --------------------------------------
+// Booking Date
+// --------------------------------------
+
+    public LocalDateTime getBookingDate() {
+
+        LocalDateTime bookingDate = null;
+        return bookingDate;
+
+    }
+
+
+
+    public Passenger getPassenger() {
+        Passenger passenger = null;
+        return passenger;
     }
 }
