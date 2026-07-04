@@ -4,6 +4,7 @@ import model.Booking;
 import model.Flight;
 import model.Passenger;
 import model.Seat;
+import service.NotificationService;
 
 public class BookingModificationService {
 
@@ -160,4 +161,24 @@ public class BookingModificationService {
 
     }
 
+    private NotificationService notificationService =
+            new NotificationService();
+
+    // --------------------------------------
+// Modification Notification
+// --------------------------------------
+
+    public void notifyModification(Booking booking) {
+
+        if (booking == null) {
+
+            return;
+
+        }
+
+        notificationService
+                .sendModificationConfirmation(
+                        booking);
+
+    }
 }

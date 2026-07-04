@@ -422,4 +422,7 @@ public class Booking  implements Comparable<Booking>{
     }
 
 
+    public String getETicketNumber() {
+        return "";
+    }
 }

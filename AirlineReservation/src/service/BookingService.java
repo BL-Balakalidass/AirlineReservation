@@ -6,6 +6,7 @@ import repo.BookingRepo;
 import java.util.List;
 import model.BookingPriority;
 import service.BookingManager;
+import service.NotificationService;
 
 public class BookingService {
 
@@ -249,6 +250,54 @@ public class BookingService {
         BookingManager
                 .getInstance()
                 .displayBookings();
+
+    }
+    private NotificationService notificationService =
+            new NotificationService();
+    // --------------------------------------
+// Booking Notifications
+// --------------------------------------
+
+    public void notifyBookingConfirmation(Booking booking) {
+
+        if (booking == null) {
+
+            return;
+
+        }
+
+        notificationService.sendBookingConfirmation(booking);
+
+        notificationService.sendBookingSMS(booking);
+
+    }
+    // --------------------------------------
+// Flight Notifications
+// --------------------------------------
+
+    public void notifyFlightDelay(Flight flight) {
+
+        notificationService.sendDelayNotification(flight);
+
+    }
+    public void notifyGateChange(Flight flight,
+                                 String gate) {
+
+        notificationService.sendGateChangeNotification(
+                flight,
+                gate);
+
+    }
+    public void notifyCheckIn(Booking booking) {
+
+        notificationService.sendCheckInReminder(
+                booking);
+
+    }
+    public void notifyBoarding(Booking booking) {
+
+        notificationService.sendBoardingReminder(
+                booking);
 
     }
 }
