@@ -5,6 +5,7 @@ import repo.BookingRepo;
 
 import java.util.List;
 import model.BookingPriority;
+import service.BookingManager;
 
 public class BookingService {
 
@@ -203,4 +204,51 @@ public class BookingService {
 
     }
 
+    // --------------------------------------
+// Save Booking
+// --------------------------------------
+
+    public void saveBooking(Booking booking) {
+
+        BookingManager
+                .getInstance()
+                .addBooking(booking);
+
+    }
+
+// --------------------------------------
+// Find Booking
+// --------------------------------------
+
+    public Booking findBooking(String pnr) {
+
+        return BookingManager
+                .getInstance()
+                .getBooking(pnr);
+
+    }
+
+// --------------------------------------
+// Delete Booking
+// --------------------------------------
+
+    public void deleteBooking(String pnr) {
+
+        BookingManager
+                .getInstance()
+                .removeBooking(pnr);
+
+    }
+
+// --------------------------------------
+// Display Cached Bookings
+// --------------------------------------
+
+    public void displayCachedBookings() {
+
+        BookingManager
+                .getInstance()
+                .displayBookings();
+
+    }
 }
