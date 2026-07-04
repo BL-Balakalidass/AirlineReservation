@@ -11,4 +11,9 @@ public interface Payment {
     // Refund payment
     boolean refundPayment(double amount);
 
+    String getTransactionId();
+
+    String getAmount();
+
+    String getStatus();
 }

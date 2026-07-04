@@ -3,6 +3,8 @@ package service;
 import model.Booking;
 import model.Payment;
 import model.PaymentStatus;
+import service.PaymentManager;
+import model.Payment;
 
 import java.util.UUID;
 
@@ -166,6 +168,54 @@ public class PaymentService {
 
         System.out.println(
                 "Refund Successful.");
+
+    }
+
+    // --------------------------------------
+// Save Payment
+// --------------------------------------
+
+    public void savePayment(Payment payment) {
+
+        PaymentManager
+                .getInstance()
+                .addPayment(payment);
+
+    }
+
+// --------------------------------------
+// Find Payment
+// --------------------------------------
+
+    public Payment findPayment(String transactionId) {
+
+        return PaymentManager
+                .getInstance()
+                .getPayment(transactionId);
+
+    }
+
+// --------------------------------------
+// Delete Payment
+// --------------------------------------
+
+    public void deletePayment(String transactionId) {
+
+        PaymentManager
+                .getInstance()
+                .removePayment(transactionId);
+
+    }
+
+// --------------------------------------
+// Display Cached Payments
+// --------------------------------------
+
+    public void displayCachedPayments() {
+
+        PaymentManager
+                .getInstance()
+                .displayPayments();
 
     }
 

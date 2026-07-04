@@ -48,6 +48,21 @@ public class UPIPayment implements Payment {
         return true;
     }
 
+    @Override
+    public String getTransactionId() {
+        return "";
+    }
+
+    @Override
+    public String getAmount() {
+        return "";
+    }
+
+    @Override
+    public String getStatus() {
+        return "";
+    }
+
     public String getProvider() {
         return provider;
     }

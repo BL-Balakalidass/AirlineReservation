@@ -65,6 +65,21 @@ public class CardPayment implements Payment {
         return true;
     }
 
+    @Override
+    public String getTransactionId() {
+        return "";
+    }
+
+    @Override
+    public String getAmount() {
+        return "";
+    }
+
+    @Override
+    public String getStatus() {
+        return "";
+    }
+
     public boolean isEmiEnabled() {
         return emiEnabled;
     }

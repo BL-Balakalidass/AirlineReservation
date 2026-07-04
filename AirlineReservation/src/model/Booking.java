@@ -416,4 +416,8 @@ public class Booking  implements Comparable<Booking>{
         this.pnr = pnr;
 
     }
+
+    public User getPassenger() {
+        return null;
+    }
 }
