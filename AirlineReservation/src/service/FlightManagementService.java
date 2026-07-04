@@ -1,11 +1,14 @@
 package service;
 
 import enums.FlightStatus;
+import model.Booking;
 import model.Flight;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Passenger;
 
 public class FlightManagementService {
 
@@ -335,6 +338,146 @@ public class FlightManagementService {
     public List<Flight> getAllFlights() {
 
         return flights;
+
+    }
+    private ReportService reportService =
+            new ReportService();
+
+    // --------------------------------------
+// Flight Occupancy
+// --------------------------------------
+
+    public void displayOccupancy(
+            Flight flight,
+            int totalSeats) {
+
+        reportService.flightOccupancy(
+                flight,
+                totalSeats);
+
+    }
+
+// --------------------------------------
+// Popular Routes
+// --------------------------------------
+
+    public void displayPopularRoutes(
+            List<Booking> bookings) {
+
+        reportService.popularRoutes(
+                bookings);
+
+    }
+
+// --------------------------------------
+// Revenue Per Flight
+// --------------------------------------
+
+    public void displayRevenuePerFlight(
+            List<Booking> bookings) {
+
+        reportService.revenuePerFlight(
+                bookings);
+
+    }
+
+// --------------------------------------
+// Airline Performance
+// --------------------------------------
+
+    public void displayAirlinePerformance(
+            List<Booking> bookings) {
+
+        reportService.airlinePerformance(
+                bookings);
+
+    }
+
+// --------------------------------------
+// Peak Booking Period
+// --------------------------------------
+
+    public void displayPeakBookingPeriod(
+            List<Booking> bookings) {
+
+        reportService.peakBookingPeriod(
+                bookings);
+
+    }
+
+// --------------------------------------
+// Seat Utilization
+// --------------------------------------
+
+    public void displaySeatUtilization(
+            Flight flight,
+            int totalSeats) {
+
+        reportService.seatUtilization(
+                flight,
+                totalSeats);
+
+    }
+
+// --------------------------------------
+// Passenger Demographics
+// --------------------------------------
+
+    public void displayPassengerDemographics(
+            List<Passenger> passengers) {
+
+        reportService.passengerDemographics(
+                passengers);
+
+    }
+
+// --------------------------------------
+// Repeat Customers
+// --------------------------------------
+
+    public void displayRepeatCustomers(
+            List<Passenger> passengers) {
+
+        reportService.repeatCustomers(
+                passengers);
+
+    }
+
+// --------------------------------------
+// Customer Lifetime Value
+// --------------------------------------
+
+    public void displayCustomerLifetimeValue(
+            Passenger passenger,
+            List<Booking> bookings) {
+
+        reportService.customerLifetimeValue(
+                passenger,
+                bookings);
+
+    }
+
+// --------------------------------------
+// Booking Patterns
+// --------------------------------------
+
+    public void displayBookingPatterns(
+            List<Booking> bookings) {
+
+        reportService.bookingPatterns(
+                bookings);
+
+    }
+
+// --------------------------------------
+// Passenger Preferences
+// --------------------------------------
+
+    public void displayPassengerPreferences(
+            List<Passenger> passengers) {
+
+        reportService.passengerPreferences(
+                passengers);
 
     }
 
