@@ -4,6 +4,7 @@ import model.Booking;
 import model.BookingState;
 import model.Passenger;
 import model.Seat;
+import service.NotificationService;
 
 public class BookingCancellationService {
 
@@ -148,6 +149,55 @@ public class BookingCancellationService {
                 "========== CANCELLATION DETAILS ==========");
 
         booking.displayBooking();
+
+    }
+
+    private NotificationService notificationService =
+            new NotificationService();
+
+    // --------------------------------------
+// Cancellation Notification
+// --------------------------------------
+
+    public void notifyCancellation(Booking booking) {
+
+        if (booking == null) {
+
+            return;
+
+        }
+
+        notificationService
+                .sendCancellationConfirmation(
+                        booking);
+
+    }
+
+    // --------------------------------------
+// Refund Initiated Notification
+// --------------------------------------
+
+    public void notifyRefundInitiated(Booking booking,
+                                      double amount) {
+
+        notificationService
+                .sendRefundInitiated(
+                        booking,
+                        amount);
+
+    }
+
+    // --------------------------------------
+// Refund Completed Notification
+// --------------------------------------
+
+    public void notifyRefundCompleted(Booking booking,
+                                      double amount) {
+
+        notificationService
+                .sendRefundCompleted(
+                        booking,
+                        amount);
 
     }
 

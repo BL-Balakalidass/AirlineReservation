@@ -5,6 +5,7 @@ import model.Payment;
 import model.PaymentStatus;
 import service.PaymentManager;
 import model.Payment;
+import service.NotificationService;
 
 import java.util.UUID;
 
@@ -219,4 +220,29 @@ public class PaymentService {
 
     }
 
+    private NotificationService notificationService =
+            new NotificationService();
+    // --------------------------------------
+// Payment Receipt Notification
+// --------------------------------------
+
+    public void notifyPaymentSuccess(Booking booking) {
+
+        if (booking == null) {
+
+            return;
+
+        }
+
+        notificationService.sendPaymentReceipt(
+                booking);
+
+    }
+
+    public void notifyWhatsApp(Booking booking) {
+
+        notificationService.sendWhatsAppNotification(
+                booking);
+
+    }
 }
