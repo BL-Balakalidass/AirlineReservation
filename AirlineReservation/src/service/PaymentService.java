@@ -6,6 +6,7 @@ import model.PaymentStatus;
 import service.PaymentManager;
 import model.Payment;
 import service.NotificationService;
+import service.BusinessRuleService;
 
 import java.util.UUID;
 
@@ -243,6 +244,65 @@ public class PaymentService {
 
         notificationService.sendWhatsAppNotification(
                 booking);
+
+    }
+
+
+    private BusinessRuleService businessRuleService =
+            new BusinessRuleService();
+
+    // =====================================================
+// CALCULATE FINAL PAYMENT
+// =====================================================
+
+    public double calculateFinalPayment(
+            Booking booking,
+            double excessWeight,
+            boolean premiumSeat,
+            boolean upgradedMeal,
+            String couponCode) {
+
+        if (booking == null) {
+
+            return 0;
+
+        }
+
+        double amount =
+                businessRuleService.calculateFinalFare(
+                        booking.getFlight(),
+                        excessWeight,
+                        premiumSeat,
+                        upgradedMeal,
+                        couponCode);
+
+        booking.setTotalAmount(amount);
+
+        return amount;
+
+    }
+    // =====================================================
+// APPLY COUPON
+// =====================================================
+
+    public double applyCouponDiscount(
+            Booking booking,
+            String couponCode) {
+
+        if (booking == null) {
+
+            return 0;
+
+        }
+
+        double amount =
+                businessRuleService.applyCoupon(
+                        couponCode,
+                        booking.getTotalAmount());
+
+        booking.setTotalAmount(amount);
+
+        return amount;
 
     }
 }

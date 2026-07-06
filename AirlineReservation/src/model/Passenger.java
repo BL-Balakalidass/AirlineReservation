@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDate;
 
 public class Passenger extends User {
 
@@ -88,6 +89,116 @@ public class Passenger extends User {
     public String getPassport() {
         return "";
 
+
+    }
+
+// =====================================================
+// BUSINESS RULE VALIDATION
+// =====================================================
+
+    private int age;
+
+    private boolean infant;
+
+    private boolean child;
+
+    private boolean adult;
+
+    private String passport;
+
+    private LocalDate passportExpiryDate;
+
+    // =====================================================
+// AGE
+// =====================================================
+
+    public int getAge() {
+
+        return age;
+
+    }
+
+    public void setAge(int age) {
+
+        this.age = age;
+
+    }
+
+// =====================================================
+// INFANT
+// =====================================================
+
+    public boolean isInfant() {
+
+        return infant;
+
+    }
+
+    public void setInfant(boolean infant) {
+
+        this.infant = infant;
+
+    }
+
+// =====================================================
+// CHILD
+// =====================================================
+
+    public boolean isChild() {
+
+        return child;
+
+    }
+
+    public void setChild(boolean child) {
+
+        this.child = child;
+
+    }
+
+// =====================================================
+// ADULT
+// =====================================================
+
+    public boolean isAdult() {
+
+        return adult;
+
+    }
+
+    public void setAdult(boolean adult) {
+
+        this.adult = adult;
+
+    }
+
+// =====================================================
+// PASSPORT
+// =====================================================
+
+
+
+    public void setPassport(String passport) {
+
+        this.passport = passport;
+
+    }
+
+// =====================================================
+// PASSPORT EXPIRY
+// =====================================================
+
+    public LocalDate getPassportExpiryDate() {
+
+        return passportExpiryDate;
+
+    }
+
+    public void setPassportExpiryDate(
+            LocalDate passportExpiryDate) {
+
+        this.passportExpiryDate =
+                passportExpiryDate;
 
     }
 }

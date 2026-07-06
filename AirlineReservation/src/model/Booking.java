@@ -349,6 +349,21 @@ public class Booking  implements Comparable<Booking>{
 
         System.out.println("====================================");
 
+        System.out.println(
+                "Seat Charge           : ₹"
+                        + seatCharge);
+
+        System.out.println(
+                "Meal Charge           : ₹"
+                        + mealCharge);
+
+        System.out.println(
+                "Baggage Charge        : ₹"
+                        + baggageCharge);
+
+        System.out.println(
+                "Coupon Discount       : ₹"
+                        + couponDiscount);
     }
 
     @Override
@@ -531,6 +546,93 @@ public class Booking  implements Comparable<Booking>{
 //    }
 
 
+    // =====================================================
+// FARE BREAKDOWN
+// =====================================================
+
+    private double baggageCharge;
+
+    private double mealCharge;
+
+    private double couponDiscount;
 
 
+// =====================================================
+// BAGGAGE CHARGE
+// =====================================================
+
+    public double getBaggageCharge() {
+
+        return baggageCharge;
+
+    }
+
+    public void setBaggageCharge(
+            double baggageCharge) {
+
+        this.baggageCharge =
+                baggageCharge;
+
+    }
+
+// =====================================================
+// MEAL CHARGE
+// =====================================================
+
+    public double getMealCharge() {
+
+        return mealCharge;
+
+    }
+
+    public void setMealCharge(
+            double mealCharge) {
+
+        this.mealCharge =
+                mealCharge;
+
+    }
+
+// =====================================================
+// SEAT CHARGE
+// =====================================================
+
+    public double getSeatCharge() {
+
+        return seatCharge;
+
+    }
+
+    public void setSeatCharge(
+            double seatCharge) {
+
+        this.seatCharge =
+                seatCharge;
+
+    }
+
+// =====================================================
+// COUPON DISCOUNT
+// =====================================================
+
+    public double getCouponDiscount() {
+
+        return couponDiscount;
+
+    }
+
+    public void setCouponDiscount(
+            double couponDiscount) {
+
+        this.couponDiscount =
+                couponDiscount;
+
+    }
+
+    public double getTotalAmount() {
+        return 0;
+    }
+
+    public void setTotalAmount(double amount) {
+    }
 }

@@ -10,6 +10,7 @@ import service.NotificationService;
 import java.util.List;
 import service.ReportService;
 import service.CheckInService;
+import service.BusinessRuleService;
 
 public class BookingService {
 
@@ -417,5 +418,71 @@ public class BookingService {
 
         booking.displayBoardingPass();
 
+    }
+    // =====================================================
+// BUSINESS RULE SERVICE
+// =====================================================
+
+    private BusinessRuleService businessRuleService =
+            new BusinessRuleService();
+
+    // =====================================================
+// CALCULATE FINAL FARE
+// =====================================================
+
+    public double calculateFare(
+            Booking booking,
+            double excessWeight,
+            boolean premiumSeat,
+            boolean upgradedMeal,
+            String couponCode) {
+
+        if (booking == null) {
+
+            return 0;
+
+        }
+
+        double fare =
+                businessRuleService.calculateFinalFare(
+                        booking.getFlight(),
+                        excessWeight,
+                        premiumSeat,
+                        upgradedMeal,
+                        couponCode);
+
+        booking.setTotalAmount(fare);
+
+        booking.setBaggageCharge(
+                businessRuleService.calculateBaggageCharges(
+                        excessWeight));
+
+        booking.setSeatCharge(
+                businessRuleService.calculateSeatCharges(
+                        premiumSeat));
+
+        booking.setMealCharge(
+                businessRuleService.calculateMealCharges(
+                        upgradedMeal));
+
+        if ("FLY500".equalsIgnoreCase(couponCode)) {
+
+            booking.setCouponDiscount(500);
+
+        }
+        else {
+
+            booking.setCouponDiscount(0);
+
+        }
+
+        return fare;
+
+    }
+
+    public void displayFareSummary(Booking booking) {
+    }
+
+    public void validateBooking(Booking booking, List<Passenger> passengerList) {
     }
 }
