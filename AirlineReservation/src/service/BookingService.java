@@ -11,6 +11,14 @@ import java.util.List;
 import service.ReportService;
 import service.CheckInService;
 import service.BusinessRuleService;
+import exception.BookingNotFoundException;
+import exception.BookingSessionExpiredException;
+import exception.InvalidPassengerCountException;
+
+import service.ExceptionLogger;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class BookingService {
 
@@ -484,5 +492,88 @@ public class BookingService {
     }
 
     public void validateBooking(Booking booking, List<Passenger> passengerList) {
+    }
+
+    // =====================================================
+// EXCEPTION LOGGER
+// =====================================================
+
+    private ExceptionLogger logger =
+            new ExceptionLogger();
+
+    // =====================================================
+// FIND BOOKING
+// =====================================================
+
+    public Booking findBooking(
+            Booking booking)
+            throws BookingNotFoundException {
+
+        if (booking == null) {
+
+            BookingNotFoundException exception =
+                    new BookingNotFoundException();
+
+            logger.logException(exception);
+
+            throw exception;
+
+        }
+
+        return booking;
+
+    }
+    // =====================================================
+// VALIDATE PASSENGER COUNT
+// =====================================================
+
+    public void validatePassengerCount(
+            int passengerCount)
+            throws InvalidPassengerCountException {
+
+        if (passengerCount <= 0 ||
+                passengerCount > 6) {
+
+            InvalidPassengerCountException exception =
+                    new InvalidPassengerCountException();
+
+            logger.logException(exception);
+
+            throw exception;
+
+        }
+
+        logger.logInfo(
+                "Passenger count validated.");
+
+    }
+    // =====================================================
+// BOOKING SESSION
+// =====================================================
+
+    public void validateBookingSession(
+            LocalDateTime createdTime)
+            throws BookingSessionExpiredException {
+
+        long minutes =
+                Duration.between(
+                                createdTime,
+                                LocalDateTime.now())
+                        .toMinutes();
+
+        if (minutes > 30) {
+
+            BookingSessionExpiredException exception =
+                    new BookingSessionExpiredException();
+
+            logger.logException(exception);
+
+            throw exception;
+
+        }
+
+        logger.logInfo(
+                "Booking session is active.");
+
     }
 }

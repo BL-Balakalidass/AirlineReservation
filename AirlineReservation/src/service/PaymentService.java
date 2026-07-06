@@ -7,6 +7,12 @@ import service.PaymentManager;
 import model.Payment;
 import service.NotificationService;
 import service.BusinessRuleService;
+import exception.PaymentFailureException;
+import exception.NetworkTimeoutException;
+import exception.DatabaseConnectionException;
+import exception.InvalidPaymentException;
+
+import service.ExceptionLogger;
 
 import java.util.UUID;
 
@@ -305,4 +311,80 @@ public class PaymentService {
         return amount;
 
     }
+    private ExceptionLogger logger =
+            new ExceptionLogger();
+
+    // =====================================================
+// VALIDATE PAYMENT
+// =====================================================
+
+    public void validatePayment(
+            String cardNumber)
+            throws InvalidPaymentException {
+
+        if (cardNumber == null ||
+                cardNumber.length() < 12) {
+
+            InvalidPaymentException exception =
+                    new InvalidPaymentException();
+
+            logger.logException(exception);
+
+            throw exception;
+
+        }
+
+        logger.logInfo(
+                "Payment details validated.");
+
+    }
+
+    // =====================================================
+// PAYMENT FAILURE
+// =====================================================
+
+    public void simulatePaymentFailure()
+            throws PaymentFailureException {
+
+        PaymentFailureException exception =
+                new PaymentFailureException();
+
+        logger.logException(exception);
+
+        throw exception;
+
+    }
+
+    // =====================================================
+// NETWORK TIMEOUT
+// =====================================================
+
+    public void simulateNetworkTimeout()
+            throws NetworkTimeoutException {
+
+        NetworkTimeoutException exception =
+                new NetworkTimeoutException();
+
+        logger.logException(exception);
+
+        throw exception;
+
+    }
+
+    // =====================================================
+// DATABASE FAILURE
+// =====================================================
+
+    public void simulateDatabaseFailure()
+            throws DatabaseConnectionException {
+
+        DatabaseConnectionException exception =
+                new DatabaseConnectionException();
+
+        logger.logException(exception);
+
+        throw exception;
+
+    }
+
 }
