@@ -14,6 +14,12 @@ import java.util.List;
 import model.Booking;
 import model.Flight;
 import model.Passenger;
+import service.SearchOptimizationService;
+
+import model.Flight;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public class FlightManagementService {
 
@@ -500,5 +506,36 @@ public class FlightManagementService {
 
     }
 
+    // =====================================================
+// SEARCH OPTIMIZATION SERVICE
+// =====================================================
+
+    private SearchOptimizationService searchService =
+            new SearchOptimizationService();
+
+    // =====================================================
+// SEARCH FLIGHTS
+// =====================================================
+
+    public List<Flight> searchFlights(
+            List<Flight> flights,
+            String source,
+            String destination) {
+
+        return searchService.searchFlights(
+                flights,
+                source,
+                destination);
+
+    }
+    // =====================================================
+// CLEAR SEARCH CACHE
+// =====================================================
+
+    public void clearSearchCache() {
+
+        searchService.clearCache();
+
+    }
 
 }

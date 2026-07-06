@@ -23,12 +23,23 @@ public class ReportService {
         System.out.println("Total Bookings : " + bookings.size());
 
         for (Booking booking : bookings) {
-
             System.out.println("----------------------------------");
             System.out.println("PNR        : " + booking.getPnr());
-            System.out.println("Passenger  : " + booking.getPassenger().getFullName());
-            System.out.println("Flight     : " + booking.getFlight().getFlightNumber());
-            System.out.println("Route      : " + booking.getFlight().getRoute());
+
+            if (booking.getPassenger() != null) {
+                System.out.println("Passenger  : " + booking.getPassenger().getFullName());
+            } else {
+                System.out.println("Passenger  : N/A");
+            }
+
+            if (booking.getFlight() != null) {
+                System.out.println("Flight     : " + booking.getFlight().getFlightNumber());
+                System.out.println("Route      : " + booking.getFlight().getRoute());
+            } else {
+                System.out.println("Flight     : N/A");
+                System.out.println("Route      : N/A");
+            }
+
             System.out.println("Fare       : ₹" + booking.getTotalFare());
 
         }
@@ -114,8 +125,17 @@ public class ReportService {
 
             }
 
-            String airline =
-                    flight.getAirline().getAirlineName();
+//            String airline =
+//                    flight.getAirline().getAirlineName();
+
+
+            String airline;
+
+            if (flight != null && flight.getAirline() != null) {
+                airline = flight.getAirline().getAirlineName();
+            } else {
+                airline = "Unknown Airline";
+            }
 
             airlineMap.put(
                     airline,
