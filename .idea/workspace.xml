@@ -5,16 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/FlightManagementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/FlightManagementService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/Booking$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/Booking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingCancellationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingModificationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/FlightManagementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/FlightManagementService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/NotificationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/PaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

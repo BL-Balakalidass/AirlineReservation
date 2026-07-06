@@ -7,6 +7,9 @@ import java.util.List;
 import model.BookingPriority;
 import service.BookingManager;
 import service.NotificationService;
+import java.util.List;
+import service.ReportService;
+import service.CheckInService;
 
 public class BookingService {
 
@@ -298,6 +301,121 @@ public class BookingService {
 
         notificationService.sendBoardingReminder(
                 booking);
+
+    }
+    private ReportService reportService = new ReportService();
+
+    // =====================================================
+// DAILY BOOKING REPORT
+// =====================================================
+
+    public void displayDailyBookingReport(List<Booking> bookings) {
+
+        reportService.generateDailyBookingReport(bookings);
+
+    }
+
+// =====================================================
+// REVENUE REPORT
+// =====================================================
+
+    public void displayRevenueReport(List<Booking> bookings) {
+
+        reportService.generateRevenueReport(bookings);
+
+    }
+
+// =====================================================
+// ROUTE ANALYSIS
+// =====================================================
+
+    public void displayRouteAnalysis(List<Booking> bookings) {
+
+        reportService.bookingTrendByRoute(bookings);
+
+    }
+
+// =====================================================
+// AIRLINE ANALYSIS
+// =====================================================
+
+    public void displayAirlineAnalysis(List<Booking> bookings) {
+
+        reportService.bookingTrendByAirline(bookings);
+
+    }
+
+// =====================================================
+// AVERAGE BOOKING VALUE
+// =====================================================
+
+    public void displayAverageBookingValue(List<Booking> bookings) {
+
+        reportService.averageBookingValue(bookings);
+
+    }
+
+// =====================================================
+// CANCELLATION RATE
+// =====================================================
+
+    public void displayCancellationRate(List<Booking> bookings) {
+
+        reportService.cancellationRate(bookings);
+
+    }
+
+// =====================================================
+// PAYMENT SUCCESS / FAILURE RATE
+// =====================================================
+
+    public void displayPaymentSuccessRate(int success,
+                                          int failed) {
+
+        reportService.paymentSuccessRate(success, failed);
+
+    }
+    private CheckInService checkInService =
+            new CheckInService();
+    // =====================================================
+// VALIDATE BOOKING
+// =====================================================
+
+    public boolean validateBookingForCheckIn(
+            Booking booking) {
+
+        return checkInService
+                .validateCheckInWindow(booking);
+
+    }
+    // =====================================================
+// ONLINE CHECK-IN
+// =====================================================
+
+    public void checkInBooking(
+            Booking booking) {
+
+        checkInService.onlineCheckIn(
+                booking);
+
+    }
+    // =====================================================
+// DISPLAY BOARDING PASS
+// =====================================================
+
+    public void displayBoardingPass(
+            Booking booking) {
+
+        if (booking == null) {
+
+            System.out.println(
+                    "Booking not found.");
+
+            return;
+
+        }
+
+        booking.displayBoardingPass();
 
     }
 }
