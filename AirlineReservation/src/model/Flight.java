@@ -310,9 +310,15 @@ public class Flight {
 
     public String getRoute() {
 
-        return sourceAirport.getAirportCode()
-                + " -> "
-                + destinationAirport.getAirportCode();
+        String source = (sourceAirport != null)
+                ? sourceAirport.getAirportCode()
+                : "Unknown";
+
+        String destination = (destinationAirport != null)
+                ? destinationAirport.getAirportCode()
+                : "Unknown";
+
+        return source + " -> " + destination;
     }
 
     public boolean hasAvailableSeats(int passengers) {
@@ -350,31 +356,22 @@ public class Flight {
     @Override
     public String toString() {
 
+        String airlineName = (airline != null)
+                ? airline.getAirlineName()
+                : "Unknown Airline";
+
+        String sourceCode = (sourceAirport != null)
+                ? sourceAirport.getAirportCode()
+                : "Unknown";
+
+        String destinationCode = (destinationAirport != null)
+                ? destinationAirport.getAirportCode()
+                : "Unknown";
+
         return "\n===============================" +
-                "\nFlight Number      : " + flightNumber +
-                "\nAirline            : " + airline.getAirlineName() +
-                "\nAircraft           : " + aircraft +
-                "\nRoute              : " + getRoute() +
-                "\nDeparture          : " + departureTime +
-                "\nArrival            : " + arrivalTime +
-                "\nDuration           : " + getFormattedDuration() +
-                "\nTravel Class       : " + travelClass +
-                "\nBase Fare          : ₹" + baseFare +
-                "\nTax                : ₹" + tax +
-                "\nService Charge     : ₹" + serviceCharge +
-                "\nTotal Fare         : ₹" + getTotalFare() +
-                "\nAvailable Seats    : " + availableSeats +
-                "\nStops              : " + stops +
-                "\nLayover            : " + layoverMinutes + " min" +
-                "\nCabin Baggage      : " + cabinBaggage + " kg" +
-                "\nCheck-in Baggage   : " + checkInBaggage + " kg" +
-                "\nWiFi               : " + (wifi ? "Yes" : "No") +
-                "\nMeals              : " + (meals ? "Available" : "No") +
-                "\nEntertainment      : " + (entertainment ? "Available" : "No") +
-                "\nStatus             : " + status +
-                "\nCancellation       : " + cancellationPolicy +
-                "\nModification       : " + modificationPolicy +
-                "\n===============================";
+                "\nFlight Number      : " + (flightNumber != null ? flightNumber : "N/A") +
+                "\nAirline            : " + airlineName +
+                "\nRoute              : " + sourceCode + " -> " + destinationCode;
     }
 
     public double getFare() {

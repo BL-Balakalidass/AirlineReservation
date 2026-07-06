@@ -500,24 +500,35 @@ public class Booking  implements Comparable<Booking>{
 
     }
 
-    public void displayBoardingPass() {
-
-        System.out.println("\n==================================");
-        System.out.println("BOARDING PASS");
-        System.out.println("==================================");
-
-        System.out.println("PNR              : " + pnr);
-        User passenger;
-        System.out.println("Passenger        : " + passenger.getFullName());
-        System.out.println("Flight           : " + flight.getFlightNumber());
-        System.out.println("Seat             : " + seat.getSeatId());
-        System.out.println("Boarding Pass No : " + boardingPassNumber);
-        System.out.println("Checked In       : " + checkedIn);
-        System.out.println("Check-In Time    : " + checkInTime);
-
-        System.out.println("==================================");
-
+    public Seat getSeat() {
+        return null;
     }
+
+    public void setSeat(Seat newSeat) {
+    }
+
+    public void displayBoardingPass() {
+    }
+
+//    public void displayBoardingPass() {
+//
+//        System.out.println("\n==================================");
+//        System.out.println("BOARDING PASS");
+//        System.out.println("==================================");
+//
+//        System.out.println("PNR              : " + pnr);
+//        User passenger;
+//        System.out.println("Passenger        : " + passenger.getFullName());
+//        System.out.println("Flight           : " + flight.getFlightNumber());
+//        Seat seat;
+//        System.out.println("Seat             : " + seat.getSeatId());
+//        System.out.println("Boarding Pass No : " + boardingPassNumber);
+//        System.out.println("Checked In       : " + checkedIn);
+//        System.out.println("Check-In Time    : " + checkInTime);
+//
+//        System.out.println("==================================");
+//
+//    }
 
 
 

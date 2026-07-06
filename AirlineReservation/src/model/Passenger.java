@@ -85,7 +85,7 @@ public class Passenger extends User {
     }
 
 
-    private String getPassport() {
+    public String getPassport() {
         return "";
 
 

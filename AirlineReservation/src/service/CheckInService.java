@@ -323,8 +323,7 @@ public class CheckInService {
 
         }
 
-        if (passenger.getPassport() == null ||
-                passenger.getPassport().isBlank()) {
+        if (passenger.getPassport().isBlank()) {
 
             System.out.println(
                     "Passport verification failed.");
