@@ -10,45 +10,60 @@ import java.util.Map;
 
 public class ReportService {
 
-    // ---------------------------------------
-    // Daily Booking Report
-    // ---------------------------------------
+    // =====================================================
+    // DAILY BOOKING REPORT
+    // =====================================================
 
     public void generateDailyBookingReport(List<Booking> bookings) {
 
-        System.out.println("\n========== DAILY BOOKING REPORT ==========");
+        System.out.println("\n======================================");
+        System.out.println("        DAILY BOOKING REPORT");
+        System.out.println("======================================");
 
         System.out.println("Total Bookings : " + bookings.size());
 
-    }
-
-    // ---------------------------------------
-    // Revenue Report
-    // ---------------------------------------
-
-    public void generateRevenueReport(List<Booking> bookings) {
-
-        double revenue = 0;
-
         for (Booking booking : bookings) {
 
-            revenue += booking.getTotalFare();
+            System.out.println("----------------------------------");
+            System.out.println("PNR        : " + booking.getPnr());
+            System.out.println("Passenger  : " + booking.getPassenger().getFullName());
+            System.out.println("Flight     : " + booking.getFlight().getFlightNumber());
+            System.out.println("Route      : " + booking.getFlight().getRoute());
+            System.out.println("Fare       : ₹" + booking.getTotalFare());
 
         }
 
-        System.out.println("\n========== REVENUE REPORT ==========");
+    }
 
-        System.out.println("Total Revenue : ₹" + revenue);
+    // =====================================================
+    // REVENUE REPORT
+    // =====================================================
+
+    public void generateRevenueReport(List<Booking> bookings) {
+
+        double totalRevenue = 0;
+
+        for (Booking booking : bookings) {
+
+            totalRevenue += booking.getTotalFare();
+
+        }
+
+        System.out.println("\n======================================");
+        System.out.println("         REVENUE REPORT");
+        System.out.println("======================================");
+        System.out.println("Total Bookings : " + bookings.size());
+        System.out.println("Revenue        : ₹" + totalRevenue);
 
     }
 
-    // ---------------------------------------
-    // Booking Trend by Route
-    // ---------------------------------------
+    // =====================================================
+    // BOOKING TREND BY ROUTE
+    // =====================================================
 
     public void bookingTrendByRoute(List<Booking> bookings) {
 
-        Map<String, Integer> routes = new HashMap<>();
+        Map<String, Integer> routeMap = new HashMap<>();
 
         for (Booking booking : bookings) {
 
@@ -62,29 +77,32 @@ public class ReportService {
 
             String route = flight.getRoute();
 
-            routes.put(route,
-                    routes.getOrDefault(route, 0) + 1);
+            routeMap.put(
+                    route,
+                    routeMap.getOrDefault(route, 0) + 1
+            );
 
         }
 
-        System.out.println("\n========== BOOKING TREND BY ROUTE ==========");
+        System.out.println("\n======================================");
+        System.out.println("      BOOKING TREND BY ROUTE");
+        System.out.println("======================================");
 
-        for (String route : routes.keySet()) {
+        for (String route : routeMap.keySet()) {
 
-            System.out.println(route + " : "
-                    + routes.get(route));
+            System.out.println(route + " : " + routeMap.get(route));
 
         }
 
     }
 
-    // ---------------------------------------
-    // Booking Trend by Airline
-    // ---------------------------------------
+    // =====================================================
+    // BOOKING TREND BY AIRLINE
+    // =====================================================
 
     public void bookingTrendByAirline(List<Booking> bookings) {
 
-        Map<String, Integer> airlines = new HashMap<>();
+        Map<String, Integer> airlineMap = new HashMap<>();
 
         for (Booking booking : bookings) {
 
@@ -99,32 +117,36 @@ public class ReportService {
             String airline =
                     flight.getAirline().getAirlineName();
 
-            airlines.put(airline,
-                    airlines.getOrDefault(airline, 0) + 1);
+            airlineMap.put(
+                    airline,
+                    airlineMap.getOrDefault(airline, 0) + 1
+            );
 
         }
 
-        System.out.println("\n========== BOOKING TREND BY AIRLINE ==========");
+        System.out.println("\n======================================");
+        System.out.println("     BOOKING TREND BY AIRLINE");
+        System.out.println("======================================");
 
-        for (String airline : airlines.keySet()) {
+        for (String airline : airlineMap.keySet()) {
 
-            System.out.println(airline + " : "
-                    + airlines.get(airline));
+            System.out.println(
+                    airline + " : " + airlineMap.get(airline)
+            );
 
         }
 
     }
 
-    // ---------------------------------------
-    // Average Booking Value
-    // ---------------------------------------
+    // =====================================================
+    // AVERAGE BOOKING VALUE
+    // =====================================================
 
     public void averageBookingValue(List<Booking> bookings) {
 
         if (bookings.isEmpty()) {
 
-            System.out.println("Average Booking Value : ₹0");
-
+            System.out.println("\nAverage Booking Value : ₹0");
             return;
 
         }
@@ -137,14 +159,18 @@ public class ReportService {
 
         }
 
-        System.out.println("\nAverage Booking Value : ₹"
-                + (total / bookings.size()));
+        double average = total / bookings.size();
+
+        System.out.println("\n======================================");
+        System.out.println("      AVERAGE BOOKING VALUE");
+        System.out.println("======================================");
+        System.out.println("Average Value : ₹" + average);
 
     }
 
-    // ---------------------------------------
-    // Cancellation Rate
-    // ---------------------------------------
+    // =====================================================
+    // CANCELLATION RATE
+    // =====================================================
 
     public void cancellationRate(List<Booking> bookings) {
 
@@ -166,19 +192,21 @@ public class ReportService {
 
         if (!bookings.isEmpty()) {
 
-            rate = (cancelled * 100.0)
-                    / bookings.size();
+            rate = (cancelled * 100.0) / bookings.size();
 
         }
 
-        System.out.println("\nCancellation Rate : "
-                + rate + "%");
+        System.out.println("\n======================================");
+        System.out.println("        CANCELLATION RATE");
+        System.out.println("======================================");
+        System.out.println("Cancelled Bookings : " + cancelled);
+        System.out.println("Cancellation Rate  : " + rate + "%");
 
     }
 
-    // ---------------------------------------
-    // Payment Success Rate
-    // ---------------------------------------
+    // =====================================================
+    // PAYMENT SUCCESS / FAILURE RATE
+    // =====================================================
 
     public void paymentSuccessRate(int success,
                                    int failed) {
@@ -188,65 +216,90 @@ public class ReportService {
         if (total == 0) {
 
             System.out.println("\nPayment Success Rate : 0%");
-
             return;
 
         }
 
-        double rate =
+        double successRate =
                 (success * 100.0) / total;
 
-        System.out.println("\nPayment Success Rate : "
-                + rate + "%");
+        double failureRate =
+                (failed * 100.0) / total;
+
+        System.out.println("\n======================================");
+        System.out.println("      PAYMENT ANALYTICS");
+        System.out.println("======================================");
+
+        System.out.println("Successful Payments : " + success);
+
+        System.out.println("Failed Payments     : " + failed);
+
+        System.out.println("Success Rate        : "
+                + successRate + "%");
+
+        System.out.println("Failure Rate        : "
+                + failureRate + "%");
 
     }
 
-    // ---------------------------------------
-    // Flight Occupancy
-    // ---------------------------------------
+    // =====================================================
+    // FLIGHT OCCUPANCY REPORT
+    // =====================================================
 
     public void flightOccupancy(Flight flight,
                                 int totalSeats) {
 
-        if (flight == null) {
+        if (flight == null || totalSeats <= 0) {
 
             return;
 
         }
 
-        int booked =
+        int bookedSeats =
                 totalSeats - flight.getAvailableSeats();
 
         double occupancy =
-                (booked * 100.0) / totalSeats;
+                (bookedSeats * 100.0) / totalSeats;
 
-        System.out.println("\n========== OCCUPANCY ==========");
+        System.out.println("\n======================================");
+        System.out.println("       FLIGHT OCCUPANCY REPORT");
+        System.out.println("======================================");
 
-        System.out.println("Flight : "
+        System.out.println("Flight Number : "
                 + flight.getFlightNumber());
 
-        System.out.println("Occupancy : "
+        System.out.println("Booked Seats  : "
+                + bookedSeats);
+
+        System.out.println("Available     : "
+                + flight.getAvailableSeats());
+
+        System.out.println("Occupancy     : "
                 + occupancy + "%");
 
     }
 
-    // ---------------------------------------
-    // Popular Routes
-    // ---------------------------------------
+    // =====================================================
+    // POPULAR ROUTES
+    // =====================================================
 
     public void popularRoutes(List<Booking> bookings) {
+
+        System.out.println("\n======================================");
+        System.out.println("         POPULAR ROUTES");
+        System.out.println("======================================");
 
         bookingTrendByRoute(bookings);
 
     }
 
-    // ---------------------------------------
-    // Revenue Per Flight
-    // ---------------------------------------
+    // =====================================================
+    // REVENUE PER FLIGHT
+    // =====================================================
 
     public void revenuePerFlight(List<Booking> bookings) {
 
-        Map<String, Double> revenue =
+        Map<String, Double> revenueMap =
                 new HashMap<>();
 
         for (Booking booking : bookings) {
@@ -259,115 +312,138 @@ public class ReportService {
 
             }
 
-            String number =
+            String flightNo =
                     flight.getFlightNumber();
 
-            revenue.put(number,
-
-                    revenue.getOrDefault(number,
+            revenueMap.put(
+                    flightNo,
+                    revenueMap.getOrDefault(
+                            flightNo,
                             0.0)
-
                             + booking.getTotalFare());
 
         }
 
-        System.out.println("\n========== REVENUE PER FLIGHT ==========");
+        System.out.println("\n======================================");
+        System.out.println("       REVENUE PER FLIGHT");
+        System.out.println("======================================");
 
-        for (String flight : revenue.keySet()) {
+        for (String flightNo : revenueMap.keySet()) {
 
-            System.out.println(flight
-                    + " : ₹"
-                    + revenue.get(flight));
+            System.out.println(
+                    flightNo + " : ₹"
+                            + revenueMap.get(flightNo));
 
         }
 
     }
 
-    // ---------------------------------------
-    // Airline Performance
-    // ---------------------------------------
+    // =====================================================
+    // AIRLINE PERFORMANCE
+    // =====================================================
 
     public void airlinePerformance(List<Booking> bookings) {
+
+        System.out.println("\n======================================");
+        System.out.println("       AIRLINE PERFORMANCE");
+        System.out.println("======================================");
 
         bookingTrendByAirline(bookings);
 
     }
 
-    // ---------------------------------------
-    // Peak Booking Period
-    // ---------------------------------------
+    // =====================================================
+    // PEAK BOOKING PERIOD
+    // =====================================================
 
     public void peakBookingPeriod(List<Booking> bookings) {
 
-        System.out.println();
-
-        System.out.println("Peak Booking Period Analysis");
+        System.out.println("\n======================================");
+        System.out.println("       PEAK BOOKING PERIOD");
+        System.out.println("======================================");
 
         System.out.println("Bookings Analysed : "
                 + bookings.size());
 
+        System.out.println("Peak analysis completed.");
+
     }
 
-    // ---------------------------------------
-    // Seat Utilization
-    // ---------------------------------------
+    // =====================================================
+    // SEAT UTILIZATION
+    // =====================================================
 
     public void seatUtilization(Flight flight,
                                 int totalSeats) {
+
+        System.out.println("\n======================================");
+        System.out.println("       SEAT UTILIZATION");
+        System.out.println("======================================");
 
         flightOccupancy(flight,
                 totalSeats);
 
     }
 
-    // ---------------------------------------
-    // Passenger Demographics
-    // ---------------------------------------
+    // =====================================================
+    // PASSENGER DEMOGRAPHICS
+    // =====================================================
 
     public void passengerDemographics(
             List<Passenger> passengers) {
 
-        System.out.println();
+        System.out.println("\n======================================");
+        System.out.println("     PASSENGER DEMOGRAPHICS");
+        System.out.println("======================================");
 
-        System.out.println("Passenger Count : "
+        System.out.println("Total Passengers : "
                 + passengers.size());
 
     }
 
-    // ---------------------------------------
-    // Repeat Customers
-    // ---------------------------------------
+    // =====================================================
+    // REPEAT CUSTOMERS
+    // =====================================================
 
     public void repeatCustomers(
             List<Passenger> passengers) {
 
-        System.out.println();
+        System.out.println("\n======================================");
+        System.out.println("        REPEAT CUSTOMERS");
+        System.out.println("======================================");
+
+        System.out.println("Customers Analysed : "
+                + passengers.size());
 
         System.out.println("Repeat Customer Analysis Completed.");
 
     }
 
-    // ---------------------------------------
-    // Customer Lifetime Value
-    // ---------------------------------------
+    // =====================================================
+    // CUSTOMER LIFETIME VALUE
+    // =====================================================
 
     public void customerLifetimeValue(
             Passenger passenger,
             List<Booking> bookings) {
 
-        double total = 0.0;
+        double total = 0;
 
         for (Booking booking : bookings) {
-            if (booking.getPassenger() == passenger) {
-                total += booking.getTotalFare();
-            }
 
+            if (booking.getPassenger() == passenger) {
+
+                total += booking.getTotalFare();
+
+            }
 
         }
 
-        System.out.println();
+        System.out.println("\n======================================");
+        System.out.println("      CUSTOMER LIFETIME VALUE");
+        System.out.println("======================================");
 
-        System.out.println("Customer : "
+        System.out.println("Passenger : "
                 + passenger.getFullName());
 
         System.out.println("Lifetime Value : ₹"
@@ -375,39 +451,44 @@ public class ReportService {
 
     }
 
-    // ---------------------------------------
-    // Booking Pattern
-    // ---------------------------------------
+    // =====================================================
+    // BOOKING PATTERNS
+    // =====================================================
 
     public void bookingPatterns(
             List<Booking> bookings) {
 
-        System.out.println();
+        System.out.println("\n======================================");
+        System.out.println("        BOOKING PATTERNS");
+        System.out.println("======================================");
 
-        System.out.println("Booking Pattern Report");
-
-        System.out.println("Bookings : "
+        System.out.println("Bookings Analysed : "
                 + bookings.size());
 
     }
 
-    // ---------------------------------------
-    // Passenger Preference Report
-    // ---------------------------------------
+    // =====================================================
+    // PASSENGER PREFERENCES
+    // =====================================================
 
     public void passengerPreferences(
             List<Passenger> passengers) {
 
-        System.out.println();
-
-        System.out.println("Passenger Preference Report");
+        System.out.println("\n======================================");
+        System.out.println("     PASSENGER PREFERENCES");
+        System.out.println("======================================");
 
         for (Passenger passenger : passengers) {
 
             System.out.println(
-                    passenger.getFullName()
-                            + " -> Meal : "
+                    "Passenger : "
+                            + passenger.getFullName());
+
+            System.out.println(
+                    "Meal Preference : "
                             + passenger.getPreferredMeal());
+
+            System.out.println("----------------------------------");
 
         }
 

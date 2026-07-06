@@ -72,4 +72,22 @@ public class Passenger extends User {
         this.phone = phone;
 
     }
+
+    // =====================================================
+// DOCUMENT VALIDATION
+// =====================================================
+
+    public boolean hasValidDocuments() {
+
+        return getPassport() != null &&
+                !getPassport().isBlank();
+
+    }
+
+
+    private String getPassport() {
+        return "";
+
+
+    }
 }

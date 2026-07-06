@@ -441,4 +441,85 @@ public class Booking  implements Comparable<Booking>{
         Passenger passenger = null;
         return passenger;
     }
+
+
+    // =====================================================
+// CHECK-IN DETAILS
+// =====================================================
+
+    private boolean checkedIn;
+
+    private String boardingPassNumber;
+
+    private LocalDateTime checkInTime;
+    // =====================================================
+// CHECK-IN STATUS
+// =====================================================
+
+    public boolean isCheckedIn() {
+
+        return checkedIn;
+
+    }
+
+    public void setCheckedIn(boolean checkedIn) {
+
+        this.checkedIn = checkedIn;
+
+    }
+
+// =====================================================
+// BOARDING PASS NUMBER
+// =====================================================
+
+    public String getBoardingPassNumber() {
+
+        return boardingPassNumber;
+
+    }
+
+    public void setBoardingPassNumber(String boardingPassNumber) {
+
+        this.boardingPassNumber = boardingPassNumber;
+
+    }
+
+// =====================================================
+// CHECK-IN TIME
+// =====================================================
+
+    public LocalDateTime getCheckInTime() {
+
+        return checkInTime;
+
+    }
+
+    public void setCheckInTime(LocalDateTime checkInTime) {
+
+        this.checkInTime = checkInTime;
+
+    }
+
+    public void displayBoardingPass() {
+
+        System.out.println("\n==================================");
+        System.out.println("BOARDING PASS");
+        System.out.println("==================================");
+
+        System.out.println("PNR              : " + pnr);
+        User passenger;
+        System.out.println("Passenger        : " + passenger.getFullName());
+        System.out.println("Flight           : " + flight.getFlightNumber());
+        System.out.println("Seat             : " + seat.getSeatId());
+        System.out.println("Boarding Pass No : " + boardingPassNumber);
+        System.out.println("Checked In       : " + checkedIn);
+        System.out.println("Check-In Time    : " + checkInTime);
+
+        System.out.println("==================================");
+
+    }
+
+
+
+
 }

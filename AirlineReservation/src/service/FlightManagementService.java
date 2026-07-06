@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Passenger;
+import java.util.List;
+
+import model.Booking;
+import model.Flight;
+import model.Passenger;
 
 public class FlightManagementService {
 
@@ -478,6 +483,20 @@ public class FlightManagementService {
 
         reportService.passengerPreferences(
                 passengers);
+
+    }
+
+
+
+// =====================================================
+// FLIGHT OCCUPANCY
+// =====================================================
+
+    public void displayFlightOccupancy(Flight flight,
+                                       int totalSeats) {
+
+        reportService.flightOccupancy(flight,
+                totalSeats);
 
     }
 
