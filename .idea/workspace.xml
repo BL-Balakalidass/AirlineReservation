@@ -7,14 +7,14 @@
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Booking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Flight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AirlineReservation/src/model/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/model/Passenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/CheckInService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/CheckInService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/FlightManagementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/FlightManagementService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AirlineReservation/src/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/AirlineReservation/src/service/PaymentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/model/Booking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/Flight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/model/Flight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/model/Passenger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/model/Passenger.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/BookingService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/FlightManagementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/FlightManagementService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/ReportService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AirlineReservation/service/PaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirlineReservation/service/PaymentService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

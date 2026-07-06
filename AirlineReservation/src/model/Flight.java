@@ -368,10 +368,18 @@ public class Flight {
                 ? destinationAirport.getAirportCode()
                 : "Unknown";
 
-        return "\n===============================" +
+        return "\"\\nInternational Flight : \"\n" +
+                "        + (internationalFlight ? \"Yes\" : \"No\") +\n" +
+                "\n" +
+                "\"\\nDemand Multiplier    : \"\n" +
+                "        + demandMultiplier +" +
+                "\n===============================" +
                 "\nFlight Number      : " + (flightNumber != null ? flightNumber : "N/A") +
                 "\nAirline            : " + airlineName +
                 "\nRoute              : " + sourceCode + " -> " + destinationCode;
+
+
+
     }
 
     public double getFare() {
@@ -389,6 +397,50 @@ public class Flight {
         int bookedSeats = totalSeats - availableSeats;
 
         return (bookedSeats * 100.0) / totalSeats;
+
+    }
+
+    // =====================================================
+// BUSINESS RULES
+// =====================================================
+
+    private boolean internationalFlight;
+
+    private double demandMultiplier = 1.0;
+
+    // =====================================================
+// INTERNATIONAL FLIGHT
+// =====================================================
+
+    public boolean isInternationalFlight() {
+
+        return internationalFlight;
+
+    }
+
+    public void setInternationalFlight(
+            boolean internationalFlight) {
+
+        this.internationalFlight =
+                internationalFlight;
+
+    }
+
+// =====================================================
+// DEMAND MULTIPLIER
+// =====================================================
+
+    public double getDemandMultiplier() {
+
+        return demandMultiplier;
+
+    }
+
+    public void setDemandMultiplier(
+            double demandMultiplier) {
+
+        this.demandMultiplier =
+                demandMultiplier;
 
     }
 }
