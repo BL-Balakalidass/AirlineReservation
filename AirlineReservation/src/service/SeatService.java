@@ -3,6 +3,9 @@ package service;
 import model.Seat;
 import model.SeatMap;
 import repo.SeatRepo;
+import exception.SeatUnavailableException;
+
+import service.ExceptionLogger;
 
 public class SeatService {
 
@@ -115,6 +118,31 @@ public class SeatService {
         releaseSeat(oldSeatId);
 
         return selectSeat(newSeatId, exitEligible);
+
+    }
+    private ExceptionLogger logger =
+            new ExceptionLogger();
+    // =====================================================
+// VALIDATE SEAT
+// =====================================================
+
+    public void validateSeatAvailability(
+            boolean available)
+            throws SeatUnavailableException {
+
+        if (!available) {
+
+            SeatUnavailableException exception =
+                    new SeatUnavailableException();
+
+            logger.logException(exception);
+
+            throw exception;
+
+        }
+
+        logger.logInfo(
+                "Seat available.");
 
     }
 }

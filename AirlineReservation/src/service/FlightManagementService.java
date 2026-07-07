@@ -11,15 +11,15 @@ import java.util.List;
 import model.Passenger;
 import java.util.List;
 
-import model.Booking;
-import model.Flight;
-import model.Passenger;
 import service.SearchOptimizationService;
 
-import model.Flight;
 
 import java.time.LocalDate;
-import java.util.List;
+
+import exception.FlightNotFoundException;
+import exception.InvalidAirportCodeException;
+
+import service.ExceptionLogger;
 
 public class FlightManagementService {
 
@@ -538,4 +538,52 @@ public class FlightManagementService {
 
     }
 
+    private ExceptionLogger logger =
+            new ExceptionLogger();
+    // =====================================================
+// VALIDATE AIRPORT
+// =====================================================
+
+    public void validateAirportCode(
+            String airportCode)
+            throws InvalidAirportCodeException {
+
+        if (airportCode == null ||
+                airportCode.length() != 3) {
+
+            InvalidAirportCodeException exception =
+                    new InvalidAirportCodeException();
+
+            logger.logException(exception);
+
+            throw exception;
+
+        }
+
+        logger.logInfo(
+                "Airport code validated.");
+
+    }
+    // =====================================================
+// FIND FLIGHT
+// =====================================================
+
+    public Flight findFlight(
+            Flight flight)
+            throws FlightNotFoundException {
+
+        if (flight == null) {
+
+            FlightNotFoundException exception =
+                    new FlightNotFoundException();
+
+            logger.logException(exception);
+
+            throw exception;
+
+        }
+
+        return flight;
+
+    }
 }
