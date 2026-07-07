@@ -110,4 +110,8 @@ public class Airport {
         return contactNumber;
 
     }
+
+    public String getTimeZone() {
+        return "";
+    }
 }

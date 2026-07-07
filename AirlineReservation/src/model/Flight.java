@@ -443,4 +443,16 @@ public class Flight {
                 demandMultiplier;
 
     }
+
+    public Object getSource() {
+        return null;
+    }
+
+    public char[] getDestination() {
+        return new char[0];
+    }
+
+    public String getFlightStatus() {
+        return "";
+    }
 }

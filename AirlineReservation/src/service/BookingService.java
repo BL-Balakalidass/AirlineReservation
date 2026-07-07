@@ -5,17 +5,10 @@ import repo.BookingRepo;
 
 import java.util.List;
 import model.BookingPriority;
-import service.BookingManager;
-import service.NotificationService;
-import java.util.List;
-import service.ReportService;
-import service.CheckInService;
-import service.BusinessRuleService;
 import exception.BookingNotFoundException;
 import exception.BookingSessionExpiredException;
 import exception.InvalidPassengerCountException;
-
-import service.ExceptionLogger;
+import manager.NotificationManager;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -29,7 +22,7 @@ public class BookingService {
     }
 
     // Create Booking
-    public Booking createBooking(Flight flight) {
+    public Booking createBooking(Flight flight, Passenger passenger) {
 
         Booking booking = new Booking(flight);
 
@@ -574,6 +567,73 @@ public class BookingService {
 
         logger.logInfo(
                 "Booking session is active.");
+
+    }
+
+    private final NotificationManager notificationManager =
+            NotificationManager.getInstance();
+
+    private final GDSIntegrationService gdsService =
+            new GDSIntegrationService();
+
+    // =====================================================
+// CREATE BOOKING THROUGH GDS
+// =====================================================
+
+    public Booking createBookingThroughAPI(
+            Flight flight,
+            Passenger passenger) {
+
+        Booking booking =
+                createBooking(
+                        flight,
+                        passenger);
+
+        if (booking != null) {
+
+            gdsService.bookFlight(
+                    booking);
+
+            notificationManager
+                    .sendBookingConfirmation(
+                            booking);
+
+        }
+
+        return booking;
+
+    }
+
+    // =====================================================
+// RETRIEVE BOOKING USING PNR
+// =====================================================
+
+    public Booking retrieveBooking(
+            String pnr) {
+
+        return getBookingByPNR(
+                pnr);
+
+    }
+
+    public Booking getBookingByPNR(String pnr) {
+        return null;
+    }
+    // =====================================================
+// API BOOKING CANCELLATION
+// =====================================================
+
+    public void cancelBookingAPI(
+            Booking booking,
+            BookingCancellationService cancellationService) {
+
+        cancellationService
+                .cancelBooking(
+                        booking);
+
+        notificationManager
+                .sendCancellation(
+                        booking);
 
     }
 }

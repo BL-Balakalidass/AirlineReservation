@@ -1,6 +1,7 @@
 package service;
 
 import enums.FlightStatus;
+import model.Airport;
 import model.Booking;
 import model.Flight;
 
@@ -12,6 +13,8 @@ import model.Passenger;
 import java.util.List;
 
 import service.SearchOptimizationService;
+import service.GDSIntegrationService;
+import service.AirportDataService;
 
 
 import java.time.LocalDate;
@@ -585,5 +588,93 @@ public class FlightManagementService {
 
         return flight;
 
+    }
+
+    private final GDSIntegrationService gdsService =
+            new GDSIntegrationService();
+
+    private final AirportDataService airportService =
+            new AirportDataService();
+    // =====================================================
+// SYNCHRONIZE FLIGHTS WITH GDS
+// =====================================================
+
+    public void synchronizeFlights() {
+
+        gdsService.syncInventory(
+                getAllFlights());
+
+    }
+    // =====================================================
+// SEARCH THROUGH GDS
+// =====================================================
+
+    public List<Flight> searchUsingGDS(
+            String source,
+            String destination) {
+
+        return gdsService.searchFlights(
+                getAllFlights(),
+                source,
+                destination);
+
+    }
+    // =====================================================
+// DISPLAY AIRPORT DETAILS
+// =====================================================
+
+    public void displayAirportInformation(
+            Airport airport) {
+
+        airportService.displayAirport(
+                airport);
+
+    }
+    // =====================================================
+// DISPLAY WEATHER
+// =====================================================
+
+    public void displayWeather(
+            Airport airport) {
+
+        airportService.fetchWeather(
+                airport);
+
+    }
+    // =====================================================
+// DISPLAY GATE INFORMATION
+// =====================================================
+
+    public void displayGateInformation(
+            String flightNumber) {
+
+        airportService.fetchGateInformation(
+                flightNumber);
+
+    }
+
+    // =====================================================
+// DISPLAY DELAY STATUS
+// =====================================================
+
+    public void displayDelayStatus(
+            String flightNumber) {
+
+        airportService.fetchDelayStatus(
+                flightNumber);
+
+    }
+
+
+    public List<Flight> searchFlightsByAirline(String airline) {
+        return List.of();
+    }
+
+    public List<Flight> filterByRoute(String source, String destination) {
+        return List.of();
+    }
+
+    public List<Flight> searchFlightsByDate(LocalDate date) {
+        return List.of();
     }
 }

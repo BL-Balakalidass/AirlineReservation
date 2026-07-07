@@ -201,4 +201,10 @@ public class BookingCancellationService {
 
     }
 
+    public void cancelBooking(Booking booking) {
+    }
+
+    public double calculateRefundAmount(Booking booking) {
+        return 0;
+    }
 }
