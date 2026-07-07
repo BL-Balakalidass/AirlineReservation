@@ -11,7 +11,8 @@ import exception.PaymentFailureException;
 import exception.NetworkTimeoutException;
 import exception.DatabaseConnectionException;
 import exception.InvalidPaymentException;
-
+import manager.NotificationManager;
+import service.PaymentGatewayService;
 import service.ExceptionLogger;
 
 import java.util.UUID;
@@ -387,4 +388,105 @@ public class PaymentService {
 
     }
 
+    private final PaymentGatewayService gatewayService =
+            new PaymentGatewayService();
+
+    private final NotificationManager notificationManager =
+            NotificationManager.getInstance();
+
+    // =====================================================
+// PAY USING RAZORPAY
+// =====================================================
+
+    public boolean payUsingRazorpay(
+            Booking booking,
+            double amount) {
+
+        boolean status =
+                gatewayService.processRazorpay(
+                        booking,
+                        amount);
+
+        if (status) {
+
+            notificationManager
+                    .sendPaymentReceipt(
+                            booking,
+                            amount);
+
+        }
+
+        return status;
+
+    }
+
+    // =====================================================
+// PAY USING PAYU
+// =====================================================
+
+    public boolean payUsingPayU(
+            Booking booking,
+            double amount) {
+
+        boolean status =
+                gatewayService.processPayU(
+                        booking,
+                        amount);
+
+        if (status) {
+
+            notificationManager
+                    .sendPaymentReceipt(
+                            booking,
+                            amount);
+
+        }
+
+        return status;
+
+    }
+    // =====================================================
+// PAY USING CCAVENUE
+// =====================================================
+
+    public boolean payUsingCCAvenue(
+            Booking booking,
+            double amount) {
+
+        boolean status =
+                gatewayService.processCCAvenue(
+                        booking,
+                        amount);
+
+        if (status) {
+
+            notificationManager
+                    .sendPaymentReceipt(
+                            booking,
+                            amount);
+
+        }
+
+        return status;
+
+    }
+
+    // =====================================================
+// REFUND PAYMENT
+// =====================================================
+
+    public void refundPayment(
+            Booking booking,
+            double amount) {
+
+        gatewayService.refundPayment(
+                booking,
+                amount);
+
+        notificationManager
+                .sendRefundNotification(
+                        booking,
+                        amount);
+
+    }
 }

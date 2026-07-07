@@ -201,4 +201,8 @@ public class Passenger extends User {
                 passportExpiryDate;
 
     }
+
+    public String getPhoneNumber() {
+        return phone;
+    }
 }

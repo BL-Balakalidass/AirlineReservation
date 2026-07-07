@@ -3,6 +3,7 @@ package service;
 import model.Booking;
 import model.Flight;
 import model.Passenger;
+import manager.NotificationManager;
 
 public class NotificationService {
 
@@ -311,5 +312,50 @@ public class NotificationService {
                 + amount);
 
     }
+    private final NotificationManager manager =
+            NotificationManager.getInstance();
+
+
+
+
+    // =====================================================
+// SEND PAYMENT RECEIPT
+// =====================================================
+
+    public void sendPaymentReceipt(
+            Booking booking,
+            double amount) {
+
+        manager.sendPaymentReceipt(
+                booking,
+                amount);
+
+    }
+    // =====================================================
+// SEND CANCELLATION
+// =====================================================
+
+    public void sendCancellation(
+            Booking booking) {
+
+        manager.sendCancellation(
+                booking);
+
+    }
+    // =====================================================
+// SEND FLIGHT DELAY
+// =====================================================
+
+    public void sendFlightDelay(
+            Booking booking,
+            String delay) {
+
+        manager.sendFlightDelayNotification(
+                booking,
+                delay);
+
+    }
+
+
 
 }

@@ -635,4 +635,8 @@ public class Booking  implements Comparable<Booking>{
 
     public void setTotalAmount(double amount) {
     }
+
+    public char[] getSeatNumber() {
+        return new char[0];
+    }
 }
